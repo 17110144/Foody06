@@ -5,16 +5,16 @@ public class Quan {
 
     private String Title;
     private String Category;
-    private String Desription;
+    private String Description;
     private int Thumbnail;
 
     public Quan() {
     }
 
-    public Quan(String title, String category, String desription, int thumbnail) {
+    public Quan(String title, String category, String description, int thumbnail) {
         Title = title;
         Category = category;
-        Desription = desription;
+        Description = description;
         Thumbnail = thumbnail;
     }
 
@@ -26,8 +26,8 @@ public class Quan {
         return Category;
     }
 
-    public String getDesription() {
-        return Desription;
+    public String getDescription() {
+        return Description;
     }
 
     public int getThumbnail() {
@@ -42,8 +42,8 @@ public class Quan {
         Category = category;
     }
 
-    public void setDesription(String desription) {
-        Desription = desription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public void setThumbnail(int thumbnail) {

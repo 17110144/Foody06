@@ -48,8 +48,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext,QuanActivity.class);
 
                 //Passing data to the book activity
-                intent.putExtra("BookTitle",mData.get(position).getTitle());
-                intent.putExtra("Description",mData.get(position).getDesription());
+                intent.putExtra("Title",mData.get(position).getTitle());
+                intent.putExtra("Description",mData.get(position).getDescription());
                 intent.putExtra("Thumbmail",mData.get(position).getThumbnail());
                 intent.putExtra("Category",mData.get(position).getCategory());
 
@@ -57,8 +57,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 mContext.startActivity(intent);
             }
         });
-
-
     }
 
     @Override

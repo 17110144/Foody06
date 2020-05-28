@@ -12,7 +12,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Database db;
-    List<Quan> lstquan;
+    List<Quan> lsQuan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         //hien thi view
-        lstquan = new ArrayList<>(  );
-        lstquan.add( new Quan( "Bạc sỉu đá" ,"Categories Coffee","Description quan",R.drawable.high1));
-        lstquan.add( new Quan( "Đen nóng" ,"Categories Coffee","Description quan",R.drawable.high2));
-        lstquan.add( new Quan( "Campuchino nóng" ,"Categories Coffee","Description quan",R.drawable.high3));
-        lstquan.add( new Quan( "Latte nóng" ,"Categories Coffee","Description quan",R.drawable.high4));
-        lstquan.add( new Quan( "Trà đào cam xả" ,"Categories Tea","Description quan",R.drawable.high6));
-        lstquan.add( new Quan( "Trà vải khúc bạch" ,"Categories Tea","Description quan",R.drawable.high7));
-        lstquan.add( new Quan( "Trà ô long hạt sen" ,"Categories Tea","Description quan",R.drawable.hig5));
-        lstquan.add( new Quan( "Bánh mỳ xíu mại" ,"Categories Food","Description quan",R.drawable.high8));
-        lstquan.add( new Quan( "Bánh mỳ thịt nướng" ,"Categories Food","Description quan",R.drawable.high9));
-        lstquan.add( new Quan( "Bánh mouse" ,"Categories Food","Description quan",R.drawable.high10));
+        lsQuan = new ArrayList<>(  );
+        lsQuan.add( new Quan( "Bạc sỉu đá" ,"Categories Coffee","Description ......",R.drawable.high1));
+        lsQuan.add( new Quan( "Đen nóng" ,"Categories Coffee","Description ......",R.drawable.high2));
+        lsQuan.add( new Quan( "Campuchino nóng" ,"Categories Coffee","Description ......",R.drawable.high3));
+        lsQuan.add( new Quan( "Latte nóng" ,"Categories Coffee","Description ......",R.drawable.high4));
+        lsQuan.add( new Quan( "Trà đào cam xả" ,"Categories Tea","Description ......",R.drawable.high6));
+        lsQuan.add( new Quan( "Trà vải khúc bạch" ,"Categories Tea","Description ......",R.drawable.high7));
+        lsQuan.add( new Quan( "Trà ô long hạt sen" ,"Categories Tea","Description ......",R.drawable.hig5));
+        lsQuan.add( new Quan( "Bánh mỳ xíu mại" ,"Categories Food","Description ......",R.drawable.high8));
+        lsQuan.add( new Quan( "Bánh mỳ thịt nướng" ,"Categories Food","Description ......",R.drawable.high9));
+        lsQuan.add( new Quan( "Bánh mouse" ,"Categories Food","Description ......",R.drawable.high10));
 
-        RecyclerView myrc = (RecyclerView) findViewById( R.id.recyclerview_id );
-        RecyclerViewAdapter myadapter  = new RecyclerViewAdapter( this,lstquan );
-        myrc.setLayoutManager( new GridLayoutManager( this,2 ) );
-        myrc.setAdapter( myadapter );
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lsQuan);
+        myrv.setLayoutManager(new GridLayoutManager(this,2));
+        myrv.setAdapter(myAdapter);
     }
 }
