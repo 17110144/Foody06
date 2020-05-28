@@ -1,20 +1,20 @@
 package hcmute.edu.vn.foody06;
 
+
 public class Quan {
 
     private String Title;
     private String Category;
-    private String Description;
+    private String Desription;
     private int Thumbnail;
 
-    public Quan(){
+    public Quan() {
     }
 
-    public Quan(String title, String category, String description, int thumbnail)
-    {
+    public Quan(String title, String category, String desription, int thumbnail) {
         Title = title;
         Category = category;
-        Description = description;
+        Desription = desription;
         Thumbnail = thumbnail;
     }
 
@@ -26,8 +26,8 @@ public class Quan {
         return Category;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getDesription() {
+        return Desription;
     }
 
     public int getThumbnail() {
@@ -42,11 +42,12 @@ public class Quan {
         Category = category;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public void setDesription(String desription) {
+        Desription = desription;
     }
 
     public void setThumbnail(int thumbnail) {
         Thumbnail = thumbnail;
     }
 }
+

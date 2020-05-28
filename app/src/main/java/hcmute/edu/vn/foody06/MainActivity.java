@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView myrc = (RecyclerView) findViewById( R.id.recyclerview_id );
         RecyclerViewAdapter myadapter  = new RecyclerViewAdapter( this,lstquan );
-        myrc.setLayoutManager( new GridLayoutManager( this,3 ) );
+        myrc.setLayoutManager( new GridLayoutManager( this,2 ) );
         myrc.setAdapter( myadapter );
     }
 }

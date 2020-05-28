@@ -3,8 +3,8 @@
     android:id="@+id/cardview_id"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_width="120dp"
-    android:layout_height="190dp"
+    android:layout_width="200dp"
+    android:layout_height="220dp"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     cardview:cardCornerRadius="4dp">
@@ -16,18 +16,30 @@
 
         <ImageView
             android:id="@+id/img_quan"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:background="#2d2d2d"/>
+
         <TextView
             android:id="@+id/quan_title_id"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:text="Quan Title"
+            android:layout_marginStart="5dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
             android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            android:gravity="center"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/quan_comment_id"
+            android:textColor="#2d2d2d"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Quan Title"/>
+            android:text="Comment"/>
 
     </LinearLayout>
 

@@ -19,8 +19,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
     private List<Quan> mData;
 
-    public RecyclerViewAdapter(Context mcontext, List<Quan> mData)
-    {
+
+    public RecyclerViewAdapter(Context mContext, List<Quan> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -30,32 +30,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        LayoutInflater nInflater = LayoutInflater.from(mContext);
-        view= nInflater.inflate(R.layout.cardview_item_quan,parent,false);
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.cardview_item_quan,parent,false);
 
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.tv_quan_title.setText( mData.get( position ).getTitle() );
-        holder.img_quan_thumbnail.setImageResource( mData.get( position ).getThumbnail() );
-        //set click
-        holder.cardView.setOnClickListener( new View.OnClickListener() {
+
+        holder.tv_book_title.setText(mData.get(position).getTitle());
+        holder.img_book_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        holder.cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( mContext,QuanActivity.class );
 
-                //passing data to the quan activity
-                intent.putExtra( "Title",mData.get(position).getTitle() );
-                intent.putExtra( "Description",mData.get( position ).getDescription() );
-                intent.putExtra( "Thumbnail",mData.get( position ).getThumbnail() );
+                Intent intent = new Intent(mContext,QuanActivity.class);
 
-                //start the activity
-                mContext.startActivity( intent );
+                //Passing data to the book activity
+                intent.putExtra("BookTitle",mData.get(position).getTitle());
+                intent.putExtra("Description",mData.get(position).getDesription());
+                intent.putExtra("Thumbmail",mData.get(position).getThumbnail());
+                intent.putExtra("Category",mData.get(position).getCategory());
+
+                //Start the activity
+                mContext.startActivity(intent);
             }
-        } );
-
+        });
 
 
     }
@@ -66,19 +67,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tv_quan_title;
-        ImageView img_quan_thumbnail;
+
+        TextView tv_book_title;
+        ImageView img_book_thumbnail;
         CardView cardView;
 
+        public MyViewHolder(View itemView) {
+            super(itemView);
 
-        public MyViewHolder(@NonNull View itemView) {
-            super( itemView );
-
-            tv_quan_title = (TextView) itemView.findViewById( R.id.quan_title_id );
-            img_quan_thumbnail = (ImageView) itemView.findViewById( R.id.img_quan );
-            cardView = (CardView) itemView.findViewById( R.id.cardview_id );
+            tv_book_title = (TextView) itemView.findViewById(R.id.quan_title_id);
+            img_book_thumbnail = (ImageView) itemView.findViewById(R.id.img_quan);
+            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
         }
     }
-
-
 }
