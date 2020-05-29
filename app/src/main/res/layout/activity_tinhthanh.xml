@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/actionbar_chon_tinhthanh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnhuy_tim_tinhthanh"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_toEndOf="@+id/btnhuy_tim_tinhthanh"
+            android:layout_toStartOf="@id/btnxong_tim_tinhthanh"
+            android:gravity="center_vertical"
+            android:text="Chọn Tỉnh thành"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/btnxong_tim_tinhthanh"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Xong"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_margin="5dp" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/txttim_tinhthanh"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Tìm tỉnh thành"
+        android:layout_below="@+id/actionbar_chon_tinhthanh"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:background="@drawable/edit_custom2"
+        android:drawableStart="@drawable/ic_search_black_24dp"
+        android:textSize="18sp"
+        android:layout_margin="5dp"/>
+
+    <ListView
+        android:id="@+id/lstview_chon_tinhthanh"
+        android:layout_below="@+id/txttim_tinhthanh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp">
+
+    </ListView>
+
+</RelativeLayout>

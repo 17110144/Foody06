@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
         //hien thi view
         lsQuan = new ArrayList<>(  );
-        lsQuan.add( new Quan( "Bạc sỉu đá" ,"Categories Coffee","Description ......",R.drawable.high1));
-        lsQuan.add( new Quan( "Đen nóng" ,"Categories Coffee","Description ......",R.drawable.high2));
-        lsQuan.add( new Quan( "Campuchino nóng" ,"Categories Coffee","Description ......",R.drawable.high3));
-        lsQuan.add( new Quan( "Latte nóng" ,"Categories Coffee","Description ......",R.drawable.high4));
-        lsQuan.add( new Quan( "Trà đào cam xả" ,"Categories Tea","Description ......",R.drawable.high6));
-        lsQuan.add( new Quan( "Trà vải khúc bạch" ,"Categories Tea","Description ......",R.drawable.high7));
-        lsQuan.add( new Quan( "Trà ô long hạt sen" ,"Categories Tea","Description ......",R.drawable.hig5));
-        lsQuan.add( new Quan( "Bánh mỳ xíu mại" ,"Categories Food","Description ......",R.drawable.high8));
-        lsQuan.add( new Quan( "Bánh mỳ thịt nướng" ,"Categories Food","Description ......",R.drawable.high9));
-        lsQuan.add( new Quan( "Bánh mouse" ,"Categories Food","Description ......",R.drawable.high10));
+        lsQuan.add( new Quan( "Quán cà phê" ,"Categories Coffee","Description ......",R.drawable.high1));
+        lsQuan.add( new Quan( "Quán cà phê 2" ,"Categories Coffee","Description ......",R.drawable.high2));
+        lsQuan.add( new Quan( "Quán cà phê 3" ,"Categories Coffee","Description ......",R.drawable.high3));
+        lsQuan.add( new Quan( "Quán cà phê 4","Categories Coffee","Description ......",R.drawable.high4));
+        lsQuan.add( new Quan( "Quán trà sữa " ,"Categories Tea","Description ......",R.drawable.high6));
+        lsQuan.add( new Quan( "Quán trà sữa 2" ,"Categories Tea","Description ......",R.drawable.high7));
+        lsQuan.add( new Quan( "Quán trà sữa 3" ,"Categories Tea","Description ......",R.drawable.hig5));
+        lsQuan.add( new Quan( "Quán bánh mỳ" ,"Categories Food","Description ......",R.drawable.high8));
+        lsQuan.add( new Quan( "Quán bánh mỳ 2" ,"Categories Food","Description ......",R.drawable.high9));
+        lsQuan.add( new Quan( "Quán bánh mỳ 3" ,"Categories Food","Description ......",R.drawable.high10));
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lsQuan);

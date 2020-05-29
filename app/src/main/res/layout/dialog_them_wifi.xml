@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <EditText
+        android:id="@+id/txtten_wifi"
+        android:hint="Tên wifi show sẵn nếu đã kết nối"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/edit_custom3"
+        android:drawableStart="@drawable/ic_wifi_black_24dp"
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:id="@+id/txtpass_wifi"
+        android:hint="Nhập mật khẩu"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/edit_custom3"
+        android:layout_below="@+id/txtten_wifi"
+        android:drawableStart="@drawable/ic_lock_outline_24dp"
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:layout_below="@+id/txtpass_wifi"
+        android:id="@+id/btncapnhat_wifi"
+        android:layout_margin="10dp"
+        android:text="Cập nhật wifi password"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_custom"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"/>
+
+</RelativeLayout>

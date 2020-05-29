@@ -19,22 +19,26 @@ public class QuanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan);
 
-        tvtitle = (TextView) findViewById(R.id.txttilte);
-        tvdescription = (TextView) findViewById(R.id.txtdescription);
-        tvcategory = (TextView) findViewById(R.id.txtcategory);
-        img = (ImageView) findViewById(R.id.quanthumbnail);
+
+        tvtitle = (TextView) findViewById(R.id.txttilte_quan);
+        //tvdescription = (TextView) findViewById(R.id.txtdescription);
+        //tvcategory = (TextView) findViewById(R.id.txtcategory);
+        //img = (ImageView) findViewById(R.id.quanthumbnail);
 
         //Recive data
+
         Intent intent = getIntent();
         String Title = Objects.requireNonNull(intent.getExtras()).getString("Title");
-        String Description = intent.getExtras().getString("Description");
-        String Category = intent.getExtras().getString("Category");
-        int image = intent.getExtras().getInt("Thumbmail");
+        //String Description = intent.getExtras().getString("Description");
+        //String Category = intent.getExtras().getString("Category");
+        //int image = intent.getExtras().getInt("Thumbmail");
 
         //Setting values
+
         tvtitle.setText(Title);
-        tvdescription.setText(Description);
-        tvcategory.setText(Category);
-        img.setImageResource(image);
+        //tvdescription.setText(Description);
+        //tvcategory.setText(Category);
+        //img.setImageResource(image);
+
     }
 }

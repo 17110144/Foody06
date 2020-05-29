@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview_id"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    cardview:cardCornerRadius="2dp">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_quan_ketquatimkiem"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="#2d2d2d"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txttilte_quan_ketquatimkiem"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/img_quan_ketquatimkiem"
+            android:gravity="center_vertical"
+            android:hint="Tên quán"
+            android:textColor="#2d2d2d"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtdiachi_quan_ketquatimkiem"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/txttilte_quan_ketquatimkiem"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toStartOf="@+id/txtkhoangcach_quan_ketquatimkiem"
+            android:layout_toEndOf="@+id/img_quan_ketquatimkiem"
+            android:gravity="center_vertical"
+            android:hint="Địa chỉ"
+            android:textColor="#2d2d2d"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txtkhoangcach_quan_ketquatimkiem"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/txttilte_quan_ketquatimkiem"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:gravity="center"
+            android:hint="10.1km"
+            android:textAlignment="center"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/txtloaihinh_quan_ketquatimkiem"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/img_quan_ketquatimkiem"
+            android:layout_below="@+id/txtdiachi_quan_ketquatimkiem"
+            android:gravity="center_vertical"
+            android:hint="Loại hình"
+            android:textColor="#2d2d2d"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,58 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuanActivity">
+    tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
+        android:id="@+id/actionbar_quan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:padding="10dp" >
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack_quan"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableStart="@drawable/ic_chevron_left_white_24dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@+id/btnMore_quan"
+            android:layout_toEndOf="@+id/btnBack_quan"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="125dp"
-                android:layout_height="175dp"
-                android:background="#2d2d2d"
-                android:id="@+id/quanthumbnail"
-                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/txttilte_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Tên quán"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txttilte"
+                android:id="@+id/txttinhthanh_quan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quan Title"
-                android:layout_marginTop="10dp"
-                android:textSize="18dp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/txtcategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:background="#edecec"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:id="@+id/txtdescription"
-                android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                />
+                android:layout_gravity="center"
+                android:hint="Tên tỉnh thành"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
 
-    </androidx.core.widget.NestedScrollView>
+        <Button
+            android:id="@+id/btnMore_quan"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableStart="@drawable/ic_more_horiz_white_24dp" />
 
-</LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/actionbar_quan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_gioimocuavalienhe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txttrangthai_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:text="TRẠNG THÁI"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtthoigianmo_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttrangthai_quan"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="2dp"
+                android:hint="7:00"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/temp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttrangthai_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/txtthoigianmo_quan"
+                android:text=" - "
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtthoigiandong_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttrangthai_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/temp2"
+                android:hint="22:00"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnlienhe_quan"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="3dp"
+                android:drawableStart="@drawable/ic_contact"
+                android:background="@drawable/button_custom2"
+                android:padding="5dp"
+                android:text="Liên hệ" />
+
+            <TextView
+                android:id="@+id/txtdiachi_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temp2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:hint="Đây là địa chỉ quán"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_location_on_24dp"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/txtkhoangcach_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtdiachi_quan"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="5.2 km"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_my_location_black_24dp"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtdiachi_quan"
+                android:layout_marginTop="20dp"
+                android:text="(Từ vị trí hiện tại)"
+                android:layout_toEndOf="@id/txtkhoangcach_quan"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/txtloaihinh_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtkhoangcach_quan"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:hint="Loại hình"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_restaurant_24dp"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/txtgiathapnhat_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtloaihinh_quan"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:hint="10,000đ"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_attach_money_24dp"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/temp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtloaihinh_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/txtgiathapnhat_quan"
+                android:text=" - "
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtgiacaonhat_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtloaihinh_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/temp3"
+                android:hint="100,00đ"
+                android:textSize="15sp" />
+
+
+            <Button
+                android:id="@+id/txtthucdon_quan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myMap"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/ic_thucdon_24dp"
+                android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:hint="Thực đơn"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/txtthemwifi_quan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtthucdon_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/ic_wifi_black_24dp"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:hint="Thêm wifi"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <fragment
+                android:id="@+id/myMap"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_below="@id/btnlienhe_quan"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="20dp"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtthemwifi_quan"
+                tools:ignore="ContentDescription" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_mon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_below="@+id/txtthemwifi_quan">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

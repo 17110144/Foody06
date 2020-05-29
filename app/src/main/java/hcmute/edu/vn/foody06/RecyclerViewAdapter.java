@@ -47,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 Intent intent = new Intent(mContext,QuanActivity.class);
 
-                //Passing data to the book activity
+                //Passing data to the quán activity
                 intent.putExtra("Title",mData.get(position).getTitle());
                 intent.putExtra("Description",mData.get(position).getDescription());
                 intent.putExtra("Thumbmail",mData.get(position).getThumbnail());
