@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".QuanActivity">
 
     <RelativeLayout
         android:id="@+id/actionbar_quan"
@@ -16,14 +16,10 @@
         <Button
             android:id="@+id/btnBack_quan"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:drawableStart="@drawable/ic_chevron_left_white_24dp" />
 
@@ -61,14 +57,10 @@
         <Button
             android:id="@+id/btnMore_quan"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
             android:background="?android:attr/selectableItemBackground"
             android:drawableStart="@drawable/ic_more_horiz_white_24dp" />
 
@@ -155,13 +147,15 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/temp2"
                 android:layout_alignParentStart="true"
+                android:gravity="center"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
                 android:hint="Đây là địa chỉ quán"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_location_on_24dp"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/txtkhoangcach_quan"
@@ -170,7 +164,8 @@
                 android:layout_below="@+id/txtdiachi_quan"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="35dp"
+                android:gravity="center"
                 android:text="5.2 km"
                 android:textStyle="bold"
                 android:textColor="#4CAF50"
@@ -184,10 +179,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtdiachi_quan"
-                android:layout_marginTop="20dp"
-                android:text="(Từ vị trí hiện tại)"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="38dp"
                 android:layout_toEndOf="@id/txtkhoangcach_quan"
-                android:layout_marginLeft="10dp"/>
+                android:gravity="center"
+                android:text="(Từ vị trí hiện tại)" />
 
             <TextView
                 android:id="@+id/txtloaihinh_quan"
@@ -198,6 +194,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="15dp"
                 android:hint="Loại hình"
+                android:gravity="center"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_restaurant_24dp"
@@ -213,6 +210,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="15dp"
                 android:hint="10,000đ"
+                android:gravity="center"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_attach_money_24dp"
@@ -224,8 +222,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtloaihinh_quan"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="17dp"
                 android:layout_toEndOf="@+id/txtgiathapnhat_quan"
                 android:text=" - "
                 android:textSize="15sp"
@@ -237,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtloaihinh_quan"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="17dp"
                 android:layout_toEndOf="@+id/temp3"
                 android:hint="100,00đ"
                 android:textSize="15sp" />
@@ -265,14 +263,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtthucdon_quan"
+                android:layout_alignParentStart="true"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:background="@null"
-                android:textAlignment="textStart"
                 android:drawableStart="@drawable/ic_wifi_black_24dp"
-                android:paddingStart="10dp"
                 android:drawablePadding="10dp"
                 android:hint="Thêm wifi"
+                android:paddingStart="10dp"
+                android:textAlignment="textStart"
                 android:textSize="15sp"
                 tools:ignore="RtlSymmetry" />
 

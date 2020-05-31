@@ -12,22 +12,42 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark">
 
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edit_custom"
-            android:drawableStart="@drawable/ic_search_black_24dp"
-            android:hint="Tìm kiếm món ăn, tên địa điểm, địa chỉ,..."
-            android:textColorHint="@android:color/tertiary_text_light"
-            android:textSize="13sp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edit_custom">
+
+            <EditText
+                android:id="@+id/txttimkiem_quan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:layout_toStartOf="@+id/btn_chonthanhpho"
+                android:background="@drawable/edit_custom"
+                android:drawableStart="@drawable/ic_search_black_24dp"
+                android:hint="Tìm kiếm món ăn, tên địa điểm, địa chỉ,..."
+                android:textColorHint="@android:color/tertiary_text_light"
+                android:textSize="13sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btn_chonthanhpho"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Tp HCM"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,7 +55,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="3dp">
-
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

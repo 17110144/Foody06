@@ -15,38 +15,73 @@
 
         <Button
             android:id="@+id/btnBack_timkiem"
-            android:layout_width="30dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+
             android:background="?android:attr/selectableItemBackground"
             android:drawableStart="@drawable/ic_chevron_left_white_24dp" />
 
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_toEndOf="@id/btnBack_timkiem"
-            android:background="@drawable/edit_custom"
-            android:drawableStart="@drawable/ic_search_black_24dp"
-            android:hint="Tìm kiếm món ăn, tên địa điểm, địa chỉ,..."
-            android:textColorHint="@android:color/tertiary_text_light"
-            android:textSize="15sp">
+            android:background="@drawable/edit_custom">
 
-        </EditText>
+            <EditText
+                android:id="@+id/txttimkiem_quan"
+                android:layout_width="210dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/edit_custom"
+                android:drawableStart="@drawable/ic_search_black_24dp"
+                android:padding="5dp"
+                android:textColorHint="@android:color/black"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btn_chondiadiem_timkiem"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/txttimkiem_quan"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Địa điểm"
+                android:textAllCaps="false"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@+id/btn_chondiadiem_timkiem"
+                android:gravity="center"
+                android:text="ở"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chonthanhpho_timkiem"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/btn_chondiadiem_timkiem"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Đồng Nai"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
