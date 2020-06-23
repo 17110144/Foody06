@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cardview_id"
+    android:id="@+id/cardview_item_quan"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="195dp"
@@ -15,14 +15,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_quan"
+            android:id="@+id/cardview_quan_img"
             android:layout_width="195dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:background="#2d2d2d"/>
 
         <TextView
-            android:id="@+id/quan_title_id"
+            android:id="@+id/cardview_quan_title"
             android:layout_width="match_parent"
             android:layout_height="29dp"
             android:text="Quan Title"
@@ -33,13 +33,13 @@
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/quan_comment_id"
+            android:id="@+id/cardview_quan_description"
             android:textColor="#2d2d2d"
             android:textSize="12sp"
             android:layout_marginStart="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Comment"/>
+            android:text="Description"/>
 
     </LinearLayout>
 

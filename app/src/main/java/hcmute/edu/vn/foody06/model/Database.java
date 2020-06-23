@@ -1,4 +1,4 @@
-package hcmute.edu.vn.foody06;
+package hcmute.edu.vn.foody06.model;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +13,7 @@ public class Database extends SQLiteOpenHelper{
 
     //truy vấn dữ liệu không trả kết quả: CREATE, INSERT, UPDATE, DELETE,...
     public void QueryData(String sql){
-        SQLiteDatabase database = getReadableDatabase();
+        SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
 
@@ -22,7 +22,6 @@ public class Database extends SQLiteOpenHelper{
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql,null);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txttentinhthanh_listview_tinhthanh"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/imgcheckbox_listview_tinhthanh"
+        android:gravity="center_vertical" />
+    <ImageView
+        android:id="@+id/imgcheckbox_listview_tinhthanh"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuanActivity">
+    android:background="@android:color/white"
+    tools:context=".view.QuanActivity">
 
     <RelativeLayout
         android:id="@+id/actionbar_quan"
@@ -92,6 +94,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="10dp"
                 android:text="TRẠNG THÁI"
+                android:textColor="#C8000000"
                 android:textSize="20sp" />
 
             <TextView
@@ -103,6 +106,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="2dp"
                 android:hint="7:00"
+                android:textColor="#C8000000"
                 android:textSize="15sp" />
 
             <TextView
@@ -126,6 +130,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/temp2"
                 android:hint="22:00"
+                android:textColor="#C8000000"
                 android:textSize="15sp" />
 
             <Button
@@ -151,22 +156,32 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp"
                 android:hint="Đây là địa chỉ quán"
+                android:textColor="#C8000000"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_location_on_24dp"
                 android:textSize="15sp"
                 tools:ignore="RtlSymmetry" />
 
+
+            <ProgressBar
+                android:id="@+id/progressBar_quan"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/txtdiachi_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="35dp"
+                android:layout_toEndOf="@+id/txtkhoangcach_quan" />
+
             <TextView
                 android:id="@+id/txtkhoangcach_quan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtdiachi_quan"
-                android:layout_alignParentStart="true"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="35dp"
                 android:gravity="center"
-                android:text="5.2 km"
+                android:text="0.0 km"
                 android:textStyle="bold"
                 android:textColor="#4CAF50"
                 android:paddingStart="10dp"
@@ -175,15 +190,17 @@
                 android:textSize="15sp"
                 tools:ignore="RtlSymmetry" />
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtdiachi_quan"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="38dp"
-                android:layout_toEndOf="@id/txtkhoangcach_quan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="36dp"
+                android:layout_toEndOf="@+id/progressBar_quan"
                 android:gravity="center"
-                android:text="(Từ vị trí hiện tại)" />
+                android:text="(Từ vị trí hiện tại)"
+                android:textColor="#C8000000" />
 
             <TextView
                 android:id="@+id/txtloaihinh_quan"
@@ -199,6 +216,7 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_restaurant_24dp"
                 android:textSize="15sp"
+                android:textColor="#C8000000"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -215,6 +233,7 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_attach_money_24dp"
                 android:textSize="15sp"
+                android:textColor="#C8000000"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -238,6 +257,7 @@
                 android:layout_marginTop="17dp"
                 android:layout_toEndOf="@+id/temp3"
                 android:hint="100,00đ"
+                android:textColor="#C8000000"
                 android:textSize="15sp" />
 
 
@@ -245,8 +265,7 @@
                 android:id="@+id/txtthucdon_quan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/myMap"
-                android:layout_marginStart="5dp"
+                android:layout_below="@+id/txtgiathapnhat_quan"
                 android:layout_marginTop="15dp"
                 android:background="@null"
                 android:textAlignment="textStart"
@@ -254,52 +273,59 @@
                 android:drawableEnd="@drawable/ic_navigate_next_black_24dp"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
-                android:hint="Thực đơn"
+                android:text="Thực đơn"
                 android:textSize="15sp"
+                android:textColor="#C8000000"
+                android:textAllCaps="false"
                 tools:ignore="RtlSymmetry" />
 
             <Button
-                android:id="@+id/txtthemwifi_quan"
-                android:layout_width="match_parent"
+                android:id="@+id/txtthem_tenwifi_quan"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtthucdon_quan"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="0dp"
+                android:layout_toStartOf="@+id/txtthem_passwifi_quan"
                 android:background="@null"
                 android:drawableStart="@drawable/ic_wifi_black_24dp"
                 android:drawablePadding="10dp"
-                android:hint="Thêm wifi"
+                android:hint="Tên wifi"
                 android:paddingStart="10dp"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
+                android:textColor="#C8000000"
+                android:textAllCaps="false"
                 tools:ignore="RtlSymmetry" />
 
-            <fragment
-                android:id="@+id/myMap"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_below="@id/btnlienhe_quan"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="3dp"
-                android:layout_marginTop="20dp"/>
-
-
-            <ImageView
+            <Button
+                android:id="@+id/txtthem_passwifi_quan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtthemwifi_quan"
-                tools:ignore="ContentDescription" />
+                android:layout_below="@+id/txtthucdon_quan"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:hint="Mật khẩu wifi"
+                android:textAlignment="textStart"
+                android:layout_marginEnd="15dp"
+                android:textSize="15sp"
+                android:textColor="#C8000000"
+                android:textAllCaps="false"
+                tools:ignore="RtlSymmetry" />
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/view_mon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
-                android:layout_below="@+id/txtthemwifi_quan">
-
+                android:layout_below="@+id/txtthem_tenwifi_quan">
             </androidx.recyclerview.widget.RecyclerView>
+
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
