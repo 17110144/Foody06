@@ -16,7 +16,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import hcmute.edu.vn.foody06.view.MainActivity;
 import hcmute.edu.vn.foody06.view.QuanActivity;
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.model.Quan;
@@ -47,12 +46,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         //final Context context = null;
+        Quan data = mData.get(position);
+        holder.txtTenQuan.setText(data.getTenQuan());
+        holder.txtDescription.setText(data.getDescription());
 
-        holder.txtTenQuan.setText(mData.get(position).getTenQuan());
-        holder.txtDescription.setText(mData.get(position).getDescription());
-
-        Picasso.with(this.mContext).load(mData.get(position).getUrlAnhDaiDien()).placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+        Picasso.with(this.mContext).load(data.getUrlAnhDaiDien())
                 .into(holder.img_quan_thumbnail,new com.squareup.picasso.Callback(){
 
                     @Override
@@ -71,18 +69,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, QuanActivity.class);
+                Quan data = mData.get(position);
                 //Gửi đữ liệu đến QuanActivity
-                intent.putExtra("TenQuan",mData.get(position).getTenQuan());
-                intent.putExtra("TinhThanh",mData.get(position).getTinhThanh());
-                intent.putExtra("GioMoCua",mData.get(position).getGioMoCua());
-                intent.putExtra("GioDongCua",mData.get(position).getGioDongCua());
-                intent.putExtra("DiaChi",mData.get(position).getDiaChi());
-                intent.putExtra("LoaiHinh",mData.get(position).getLoaiHinh());
-                intent.putExtra("GiaThapNhat",mData.get(position).getGiaThapNhat());
-                intent.putExtra("GiaCaoNhat",mData.get(position).getGiaCaoNhat());
-                intent.putExtra("TenWifi",mData.get(position).getWifi());
-                intent.putExtra("MatKhauWifi",mData.get(position).getMatKhauWifi());
-                intent.putExtra("SDT",mData.get(position).getSDT());
+                intent.putExtra("IdQuan",data.getIdQuan());
+                intent.putExtra("TenQuan",data.getTenQuan());
+                intent.putExtra("TinhThanh",data.getTinhThanh());
+                intent.putExtra("GioMoCua",data.getGioMoCua());
+                intent.putExtra("GioDongCua",data.getGioDongCua());
+                intent.putExtra("DiaChi",data.getDiaChi());
+                intent.putExtra("LoaiHinh",data.getLoaiHinh());
+                intent.putExtra("GiaThapNhat",data.getGiaThapNhat());
+                intent.putExtra("GiaCaoNhat",data.getGiaCaoNhat());
+                intent.putExtra("TenWifi",data.getWifi());
+                intent.putExtra("MatKhauWifi",data.getMatKhauWifi());
+                intent.putExtra("SDT",data.getSDT());
                 //Start the activity
                 mContext.startActivity(intent);
             }
@@ -105,10 +105,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            txtTenQuan = (TextView) itemView.findViewById(R.id.cardview_quan_title);
-            txtDescription = (TextView)  itemView.findViewById(R.id.cardview_quan_description);
-            img_quan_thumbnail = (ImageView) itemView.findViewById(R.id.cardview_quan_img);
-            cardView = (CardView) itemView.findViewById(R.id.cardview_item_quan);
+            txtTenQuan = itemView.findViewById(R.id.cardview_quan_title);
+            txtDescription =  itemView.findViewById(R.id.cardview_quan_description);
+            img_quan_thumbnail =  itemView.findViewById(R.id.cardview_quan_img);
+            cardView =  itemView.findViewById(R.id.cardview_item_quan);
         }
     }
 

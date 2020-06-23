@@ -47,6 +47,7 @@ public class ChonTinhThanhAdapter extends BaseAdapter {
         return position;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -67,7 +68,7 @@ public class ChonTinhThanhAdapter extends BaseAdapter {
         if(tinhThanh.isSelected())
             holder.imgCheckBox.setBackgroundResource(R.drawable.ic_checked_24);
         else{
-            holder.imgCheckBox.setBackgroundResource(R.drawable.ic_null);
+            holder.imgCheckBox.setBackgroundResource(R.drawable.ic_arrow_right_24);
         }
         return convertView;
 

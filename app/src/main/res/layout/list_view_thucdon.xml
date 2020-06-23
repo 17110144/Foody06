@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txttenmon_listview_thucdon"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:layout_marginStart="15dp"
+        android:textColor="@android:color/black"
+        android:layout_toEndOf="@+id/imgcheckbox_listview_tinhthanh"
+        android:gravity="center_vertical" />
+    <TextView
+        android:id="@+id/txtgia_listview_thucdon"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:layout_marginStart="15dp"
+        android:textColor="#0083AF"
+        android:layout_below="@+id/txttenmon_listview_thucdon"
+        android:layout_toEndOf="@+id/imgcheckbox_listview_tinhthanh"
+        android:gravity="center_vertical" />
+
+</RelativeLayout>

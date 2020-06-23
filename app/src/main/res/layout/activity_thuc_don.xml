@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
+    tools:context=".view.ThucDonActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -48,19 +48,20 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/txttenquan_thucdon"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:hint="Tên quán"
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
         android:padding="8dp"
-        android:textSize="18sp"
-        android:background="#23000000"/>
+        android:textSize="15sp"
+        android:background="#0D000000"/>
 
     <ListView
-        android:id="@+id/recyclerview_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/lstviewthucdon"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_margin="3dp">
     </ListView>
 </LinearLayout>

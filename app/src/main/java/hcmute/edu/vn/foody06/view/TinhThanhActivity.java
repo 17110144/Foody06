@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.adapter.ChonTinhThanhAdapter;
@@ -20,8 +26,14 @@ import hcmute.edu.vn.foody06.model.TinhThanh;
 public class TinhThanhActivity extends AppCompatActivity {
 
     Button btnHuy,btnXacNhan;
+    EditText editTextSearch;
     ListView lsvTinhThanh;
+
     List<TinhThanh> tinhthanhs;
+    List<TinhThanh> kqtimkiem;
+    ArrayList<TinhThanh> kqhienthi;
+
+    ChonTinhThanhAdapter adapter;
     int preSelectedIndex = -1;
     String TinhThanhDuocChon = "TP HCM";
     @Override
@@ -32,27 +44,67 @@ public class TinhThanhActivity extends AppCompatActivity {
         btnHuy = (Button) findViewById(R.id.btnhuy_tim_tinhthanh);
         btnXacNhan = (Button) findViewById(R.id.btnxong_tim_tinhthanh);
         lsvTinhThanh = (ListView) findViewById(R.id.lstview_chon_tinhthanh);
+        editTextSearch = (EditText) findViewById(R.id.txttim_tinhthanh);
 
-        themTinhThanh();
+        tinhthanhs = themTinhThanh();
+        kqtimkiem = themTinhThanh();
+        kqhienthi = themTinhThanh();
 
 
-        final ChonTinhThanhAdapter adapter = new ChonTinhThanhAdapter(this,tinhthanhs);
+
+        editTextSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                kqtimkiem.clear();
+                adapter = new ChonTinhThanhAdapter(TinhThanhActivity.this,kqtimkiem);
+                lsvTinhThanh.setAdapter(adapter);
+                return false;
+            }
+
+        });
+
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().equals(""))
+                {
+                    kqtimkiem.clear();
+                    adapter = new ChonTinhThanhAdapter(TinhThanhActivity.this,kqtimkiem);
+                    lsvTinhThanh.setAdapter(adapter);
+                }
+                else{
+                    searchItem(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+        //xử lý sự kiện chọn tỉnh thành
+        adapter = new ChonTinhThanhAdapter(this,kqhienthi);
         lsvTinhThanh.setAdapter(adapter);
-
         lsvTinhThanh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TinhThanh tinhThanh = tinhthanhs.get(position);
+                TinhThanh tinhThanh = kqhienthi.get(position);
                 tinhThanh.setSelected(true);
-                tinhthanhs.set(position,tinhThanh);
+                kqhienthi.set(position,tinhThanh);
                 if(preSelectedIndex > -1){
-                    TinhThanh preRecord = tinhthanhs.get(preSelectedIndex);
+                    TinhThanh preRecord = kqhienthi.get(preSelectedIndex);
                     preRecord.setSelected(false);
 
-                    tinhthanhs.set(preSelectedIndex,preRecord);
+                    kqhienthi.set(preSelectedIndex,preRecord);
                 }
                 preSelectedIndex = position;
-                adapter.updateRecord(tinhthanhs);
+                adapter.updateRecord(kqhienthi);
                 TinhThanhDuocChon = tinhThanh.getTenTinhThanh();
             }
         });
@@ -73,10 +125,23 @@ public class TinhThanhActivity extends AppCompatActivity {
         });
     }
 
+    private void searchItem(String textToSearch) {
+        for(int i = 0; i < tinhthanhs.size(); i++){
+            if(tinhthanhs.get(i).getTenTinhThanh().contains(textToSearch)){
+                kqtimkiem.add(tinhthanhs.get(i));
+            }
+        }
 
-    private void themTinhThanh()
+        kqhienthi = new ArrayList<>(kqtimkiem);
+        adapter = new ChonTinhThanhAdapter(this,kqhienthi);
+        lsvTinhThanh.setAdapter(adapter);
+        kqtimkiem.clear();
+    }
+
+
+    private ArrayList<TinhThanh> themTinhThanh()
     {
-        tinhthanhs = new ArrayList<>();
+        ArrayList<TinhThanh> tinhthanhs = new ArrayList<>();
         tinhthanhs.add(new TinhThanh(false,"TP HCM"));
         tinhthanhs.add(new TinhThanh(false,"Hà Nội"));
         tinhthanhs.add(new TinhThanh(false,"Hải Phòng"));
@@ -141,5 +206,6 @@ public class TinhThanhActivity extends AppCompatActivity {
         tinhthanhs.add(new TinhThanh(false,"Vĩnh Phúc"));
         tinhthanhs.add(new TinhThanh(false,"Yên Bái"));
         tinhthanhs.add(new TinhThanh(false,"Phú Yên"));
+        return tinhthanhs;
     }
 }

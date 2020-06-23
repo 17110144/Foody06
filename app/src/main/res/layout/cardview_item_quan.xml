@@ -4,7 +4,7 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="195dp"
-    android:layout_height="220dp"
+    android:layout_height="240dp"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_margin="3dp"
     cardview:cardCornerRadius="2dp">
@@ -19,12 +19,12 @@
             android:layout_width="195dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:background="#2d2d2d"/>
+            android:background="#FFFFFF"/>
 
         <TextView
             android:id="@+id/cardview_quan_title"
             android:layout_width="match_parent"
-            android:layout_height="29dp"
+            android:layout_height="45dp"
             android:text="Quan Title"
             android:layout_marginStart="5dp"
             android:gravity="center_vertical"
@@ -38,7 +38,7 @@
             android:textSize="12sp"
             android:layout_marginStart="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="45dp"
             android:text="Description"/>
 
     </LinearLayout>
