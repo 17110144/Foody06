@@ -31,7 +31,7 @@ public class TinhThanhActivity extends AppCompatActivity {
 
     List<TinhThanh> tinhthanhs;
     List<TinhThanh> kqtimkiem;
-    ArrayList<TinhThanh> kqhienthi;
+    List<TinhThanh> kqhienthi;
 
     ChonTinhThanhAdapter adapter;
     int preSelectedIndex = -1;
@@ -198,7 +198,7 @@ public class TinhThanhActivity extends AppCompatActivity {
         tinhthanhs.add(new TinhThanh(false,"Thái Bình"));
         tinhthanhs.add(new TinhThanh(false,"Thái Nguyên"));
         tinhthanhs.add(new TinhThanh(false,"Thanh Hóa"));
-        tinhthanhs.add(new TinhThanh(false,"Thừa Thiên Huế"));
+        tinhthanhs.add(new TinhThanh(false,"Huế"));
         tinhthanhs.add(new TinhThanh(false,"Tiền Giang"));
         tinhthanhs.add(new TinhThanh(false,"Trà Vinh"));
         tinhthanhs.add(new TinhThanh(false,"Tuyên Quang"));

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
+    tools:context=".view.TimQuanActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -15,7 +15,7 @@
 
         <Button
             android:id="@+id/btnBack_timkiem"
-            android:layout_width="50dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -42,7 +42,8 @@
                 android:drawableStart="@drawable/ic_search_black_24dp"
                 android:padding="5dp"
                 android:textColorHint="@android:color/black"
-                android:textSize="13sp" />
+                android:inputType="textCapWords"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/btn_chondiadiem_timkiem"
@@ -73,7 +74,8 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="9dp"
                 android:layout_toEndOf="@+id/btn_chondiadiem_timkiem"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Đồng Nai"

@@ -40,6 +40,7 @@
                 android:layout_gravity="center"
                 android:hint="Tên quán"
                 android:textAlignment="center"
+                android:layout_marginTop="5dp"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -50,7 +51,7 @@
                 android:layout_gravity="center"
                 android:hint="Tên tỉnh thành"
                 android:textAlignment="center"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="3dp"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
@@ -142,7 +143,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:drawableStart="@drawable/ic_contact"
+                android:drawableStart="@drawable/icon_contact"
                 android:background="@drawable/button_custom2"
                 android:padding="5dp"
                 android:text="Liên hệ"
@@ -172,6 +173,7 @@
                 android:layout_below="@+id/txtdiachi_quan"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="35dp"
+                android:indeterminateTint="@color/colorPrimaryDark"
                 android:layout_toEndOf="@+id/txtkhoangcach_quan" />
 
             <TextView

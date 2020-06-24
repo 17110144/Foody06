@@ -6,21 +6,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.adapter.RecyclerViewAdapter;
@@ -33,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvQuan;
     ArrayList<Quan> arrayQuan;
     RecyclerViewAdapter quanAdapter;
+    Button btnTimQuan;
 
     Button btnTinhthanh;
     public static String tenTinhThanh="TP HCM";
-
+    public static int curTime;
     final public static int REQUEST_PHONE_CALL_LOCATION = 0144;
 
     @Override
@@ -45,19 +41,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         requestPermission();
 
-        btnTinhthanh = (Button) findViewById(R.id.btn_chonthanhpho);
-        rvQuan = (RecyclerView) findViewById(R.id.recyclerview_main);
-
-        arrayQuan = new ArrayList<>();
-        quanAdapter = new RecyclerViewAdapter(this,arrayQuan);
-        rvQuan.setLayoutManager(new GridLayoutManager(this,2));
-        rvQuan.setAdapter(quanAdapter);
+        Calendar c = Calendar.getInstance();
+        @SuppressLint({"SimpleTimeFormat", "SimpleDateFormat"}) SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+        String ThoiGianHienTai = df.format(c.getTime()).replace(":", "");
+        curTime = Integer.parseInt(ThoiGianHienTai);
 
         createDataBase();
         //insertData();
 
+        btnTinhthanh =  findViewById(R.id.btn_chonthanhpho);
+        rvQuan =  findViewById(R.id.recyclerview_main);
+        btnTimQuan =  findViewById(R.id.btntimkiem);
+
+
         btnTinhthanh.setText(tenTinhThanh);
+        arrayQuan = new ArrayList<>();
         getAllDataQuanTheoTinhThanh();
+        quanAdapter = new RecyclerViewAdapter(this, arrayQuan);
+        rvQuan.setLayoutManager(new GridLayoutManager(this, 2));
+        rvQuan.setAdapter(quanAdapter);
+
 
 
 
@@ -66,11 +69,19 @@ public class MainActivity extends AppCompatActivity {
         btnTinhthanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chontinhthanh = new Intent(MainActivity.this,TinhThanhActivity.class);
+                Intent chontinhthanh = new Intent(MainActivity.this, TinhThanhActivity.class);
                 startActivity(chontinhthanh);
             }
         });
 
+        //Xử lý xự kiện tìm kiếm quán
+        btnTimQuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent timquan = new Intent(MainActivity.this, TimQuanActivity.class);
+                startActivity(timquan);
+            }
+        });
     }
 
 
@@ -79,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostResume() {
         btnTinhthanh.setText(tenTinhThanh);
         arrayQuan = new ArrayList<>();
-        quanAdapter = new RecyclerViewAdapter(this,arrayQuan);
-        rvQuan.setLayoutManager(new GridLayoutManager(this,2));
-        rvQuan.setAdapter(quanAdapter);
         getAllDataQuanTheoTinhThanh();
+        quanAdapter = new RecyclerViewAdapter(this, arrayQuan);
+        rvQuan.setLayoutManager(new GridLayoutManager(this, 2));
+        rvQuan.setAdapter(quanAdapter);
         super.onPostResume();
     }
 
@@ -95,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
     private void insertData(){
         //Thêm dữ liệu Quán xuống database
         //1->10
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Bún bò Huế Cô Mười', 'https://i.ibb.co/YP97BZ8/bunbohue.jpg','123 Võ Văn Ngân Quận Thủ Đức TP HCM','TP HCM','Tiệm ăn','20.000','50.000','6:00','22:00','BunBoCo10','11223344','097456421','Bún bò gốc Huế với hương vị đậm đà')");
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Thiên Lý - Cơm Niêu Singapore - Cửu Long', 'https://i.ibb.co/zZHNQq9/thienly.png','87A Cửu Long, P. 15, Quận 10, TP HCM','TP HCM','Tiệm ăn','25.000','100.000','10:00','21:00','ComNieuThienLy','444555666','097456422','Cơm niêu với cách chế biến theo hương vị Singapore')");
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Mỳ Quảng Cô Ba', 'https://i.ibb.co/98xCHw4/miquangga.jpg','333 Đặng Văn Bi Quận Thủ Đức TP HCM','TP HCM','Tiệm ăn','20.000','100.000','7:00','20:00','MyQuangCo3','678678678','097456423','Hương vị đậm đà xứ Quảng')");
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Phở Thìn', 'https://i.ibb.co/5hW8vMh/phobohanoi.jpg','1 Phố Hàng Bún Hà Nội','Hà Nội','Tiệm ăn','35.000','70.000','6:30','22:30','PhoThin','678678678','097456424','Phở Gia Truyền Hà Nội');");
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Phở Gà Cô Linh', 'https://i.ibb.co/s915wSw/phogahanoi.jpg','12 Phố Hàng Mã Hà Nội','Hà Nội','Tiệm ăn','35.000','70.000','6:30','22:30','PhoHai','123321321','097456424','Phở Gia Truyền Hà Nội');");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Bún bò Huế Cô Mười', 'https://i.ibb.co/YP97BZ8/bunbohue.jpg','123 Võ Văn Ngân Quận Thủ Đức TP HCM','TP HCM','Quán ăn','20.000','50.000','6:00','22:00','BunBoCo10','11223344','097456421','Bún bò gốc Huế với hương vị đậm đà')");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Thiên Lý - Cơm Niêu Singapore - Cửu Long', 'https://i.ibb.co/zZHNQq9/thienly.png','87A Cửu Long, P. 15, Quận 10, TP HCM','TP HCM','Quán ăn','25.000','100.000','10:00','21:00','ComNieuThienLy','444555666','097456422','Cơm niêu với cách chế biến theo hương vị Singapore')");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Mỳ Quảng Cô Ba', 'https://i.ibb.co/98xCHw4/miquangga.jpg','333 Đặng Văn Bi Quận Thủ Đức TP HCM','TP HCM','Quán ăn','20.000','100.000','6:00','10:00','MyQuangCo3','678678678','097456423','Hương vị đậm đà xứ Quảng')");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Phở Thìn', 'https://i.ibb.co/5hW8vMh/phobohanoi.jpg','1 Phố Hàng Bún Hà Nội','Hà Nội','Quán ăn','35.000','70.000','6:30','22:30','PhoThin','678678678','097456424','Phở Gia Truyền Hà Nội');");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Phở Gà Cô Linh', 'https://i.ibb.co/s915wSw/phogahanoi.jpg','12 Phố Hàng Mã Hà Nội','Hà Nội','Quán ăn','35.000','70.000','6:30','10:30','PhoHai','123321321','097456424','Phở Gia Truyền Hà Nội');");
 
         //6->10
         db.QueryData("INSERT INTO QUAN VALUES(null, 'Tiệm Bánh Thanh Xuân', 'https://i.ibb.co/7V8mkRB/cake.jpg','104 K8 Ngõ 6B Thành Công, Quận Ba Đình, Hà Nội','Hà Nội','Ăn vặt','30.000','70.000','09:00','20:00','ThanhXuan','22223333','0980241572','Tiệm bánh với nhiều loại bánh khác nhau, ngon và đẹp')");
@@ -109,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         db.QueryData("INSERT INTO QUAN VALUES(null, 'Highlands Coffee - SG Centre', 'https://i.ibb.co/d5sg4dR/high.png','Tầng Hầm 2, Tầng Hầm 2 - 15 TTTM Takashimaya,92 - 94 Nam Kỳ Khởi Nghĩa,P. Bến Nghé,Quận 1,TP HCM','TP HCM','Cafe','9.000','65.000','09:30','21:00','Highlands','2lands123','sdt','Thương hiệu trải dài khắp đất nước')");
 
         //11->15
-        db.QueryData("INSERT INTO QUAN VALUES(null, 'Cơm Tấm Phúc Lộc Thọ - Tô Ngọc Vân', 'https://i.ibb.co/0K46YLj/plt.jpg','124 - 132 Tô Ngọc Vân, P. Linh Tây, Quận Thủ Đức, TP HCM','TP HCM','Tiệm ăn','20.000','200.000','06:00','22:00','PhucLocTho','PLT778899','sdt','Hương vị đặc biệt, kích thích vị giác của bạn')");
+        db.QueryData("INSERT INTO QUAN VALUES(null, 'Cơm Tấm Phúc Lộc Thọ - Tô Ngọc Vân', 'https://i.ibb.co/0K46YLj/plt.jpg','124 - 132 Tô Ngọc Vân, P. Linh Tây, Quận Thủ Đức, TP HCM','TP HCM','Quán ăn','20.000','200.000','06:00','22:00','PhucLocTho','PLT778899','sdt','Hương vị đặc biệt, kích thích vị giác của bạn')");
 
 
         //Dữ liệu món ăn của từng quán
@@ -222,23 +233,4 @@ public class MainActivity extends AppCompatActivity {
     private void requestPermission(){
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE,Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_PHONE_CALL_LOCATION);
     }
-
-//    private void loadImageFromURL(String url){
-//        Picasso.with(this).load(url).placeholder(R.mipmap.ic_launcher)
-//                .error(R.mipmap.ic_launcher)
-//                .into(imageView,new com.squareup.picasso.Callback(){
-//
-//                    @Override
-//                    public void onSuccess() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError() {
-//
-//                    }
-//                });
-//    }
-
-
 }

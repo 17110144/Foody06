@@ -57,6 +57,7 @@ import hcmute.edu.vn.foody06.model.Quan;
 import hcmute.edu.vn.foody06.service.Constants;
 import hcmute.edu.vn.foody06.service.LocationIntentService;
 
+import static hcmute.edu.vn.foody06.view.MainActivity.curTime;
 import static hcmute.edu.vn.foody06.view.MainActivity.db;
 
 public class QuanActivity extends AppCompatActivity {
@@ -241,12 +242,7 @@ public class QuanActivity extends AppCompatActivity {
         ThoiGianDong = ThoiGianDong.replace(":", "");
         int time2 = Integer.parseInt(ThoiGianDong);
 
-        Calendar c = Calendar.getInstance();
-        @SuppressLint({"SimpleTimeFormat", "SimpleDateFormat"}) SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-        String ThoiGianHienTai = df.format(c.getTime()).replace(":", "");
-        int curtime = Integer.parseInt(ThoiGianHienTai);
-
-        if (time1 < curtime && curtime < time2) {
+        if (time1 < curTime && curTime < time2) {
             return "Đang mở cửa";
         } else {
             return "Chưa mở cửa";
