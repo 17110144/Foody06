@@ -14,16 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import hcmute.edu.vn.foody06.R;
-import hcmute.edu.vn.foody06.adapter.ChonTinhThanhAdapter;
-import hcmute.edu.vn.foody06.adapter.RecyclerViewAdapter;
-import hcmute.edu.vn.foody06.adapter.RecyclerViewAdapterTimKiem;
+import hcmute.edu.vn.foody06.adapter.TimKiemAdapter;
 import hcmute.edu.vn.foody06.model.Quan;
-import hcmute.edu.vn.foody06.model.TinhThanh;
-
-import static hcmute.edu.vn.foody06.view.MainActivity.db;
 import static hcmute.edu.vn.foody06.view.MainActivity.tenTinhThanh;
 
 public class TimQuanActivity extends AppCompatActivity {
@@ -32,7 +25,7 @@ public class TimQuanActivity extends AppCompatActivity {
     Button btnChonTinhThanh,btnBack;
 
     RecyclerView rvkqtkQuan;
-    RecyclerViewAdapterTimKiem tkAdapter;
+    TimKiemAdapter tkAdapter;
 
     ArrayList<Quan> dsQuanTheoTinhThanh;
     ArrayList<Quan> dsQuanTheoKQTK;
@@ -53,7 +46,6 @@ public class TimQuanActivity extends AppCompatActivity {
 
 
 
-        /*==========================================================*/
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +60,12 @@ public class TimQuanActivity extends AppCompatActivity {
                 startActivity(chontinhthanh);
             }
         });
-        /*==========================================================*/
 
         getAllDataQuanTheoTinhThanh();
-        tkAdapter = new RecyclerViewAdapterTimKiem(this,TimQuanActivity.this, dsQuanTheoTinhThanh);
+        copyData();
+        tkAdapter = new TimKiemAdapter(this,TimQuanActivity.this, dsQuanTheoTinhThanh);
         rvkqtkQuan.setLayoutManager(new GridLayoutManager(this, 1));
         rvkqtkQuan.setAdapter(tkAdapter);
-
-
 
 
         editTextTimQuan.addTextChangedListener(new TextWatcher() {
@@ -89,7 +79,7 @@ public class TimQuanActivity extends AppCompatActivity {
                 if(s.toString().equals(""))
                 {
                     dsQuanTheoKQTK.clear();
-                    tkAdapter = new RecyclerViewAdapterTimKiem(TimQuanActivity.this,TimQuanActivity.this, dsQuanTheoKQTK);
+                    tkAdapter = new TimKiemAdapter(TimQuanActivity.this,TimQuanActivity.this, dsQuanTheoKQTK);
                     rvkqtkQuan.setLayoutManager(new GridLayoutManager(TimQuanActivity.this, 1));
                     rvkqtkQuan.setAdapter(tkAdapter);
                 }
@@ -109,7 +99,7 @@ public class TimQuanActivity extends AppCompatActivity {
     protected void onPostResume() {
         btnChonTinhThanh.setText(tenTinhThanh);
         getAllDataQuanTheoTinhThanh();
-        tkAdapter = new RecyclerViewAdapterTimKiem(this,TimQuanActivity.this, dsQuanTheoTinhThanh);
+        tkAdapter = new TimKiemAdapter(this,TimQuanActivity.this, dsQuanTheoTinhThanh);
         rvkqtkQuan.setLayoutManager(new GridLayoutManager(this, 1));
         rvkqtkQuan.setAdapter(tkAdapter);
         super.onPostResume();
@@ -118,11 +108,7 @@ public class TimQuanActivity extends AppCompatActivity {
     private void getAllDataQuanTheoTinhThanh(){
         Cursor dataQuan = MainActivity.db.GetData("SELECT * FROM QUAN Where ThanhPho ='"+tenTinhThanh+"';");
         dsQuanTheoTinhThanh = new ArrayList<>();
-        dsQuanTheoKQTK = new ArrayList<>();
-        dsQuanHienThiKQTK = new ArrayList<>();
         dsQuanTheoTinhThanh.clear();
-        dsQuanTheoKQTK.clear();
-        dsQuanHienThiKQTK.clear();
         while (dataQuan.moveToNext()){
             String gioithieu = dataQuan.getString(13);
             String sdt = dataQuan.getString(12);
@@ -139,22 +125,25 @@ public class TimQuanActivity extends AppCompatActivity {
             String tenquan = dataQuan.getString(1);
             int id = dataQuan.getInt(0);
             dsQuanTheoTinhThanh.add(new Quan(id,tenquan,anhdaidien,diachi,thanhpho,loaihinh,giathapnhat,giacaonhat,giomocua,giodongcua,tenwifi,matkhauwifi,sdt,gioithieu));
-            dsQuanTheoKQTK.add(new Quan(id,tenquan,anhdaidien,diachi,thanhpho,loaihinh,giathapnhat,giacaonhat,giomocua,giodongcua,tenwifi,matkhauwifi,sdt,gioithieu));
-            dsQuanHienThiKQTK.add(new Quan(id,tenquan,anhdaidien,diachi,thanhpho,loaihinh,giathapnhat,giacaonhat,giomocua,giodongcua,tenwifi,matkhauwifi,sdt,gioithieu));
-
         }
     }
 
     private void searchItem(String textToSearch) {
+        textToSearch = textToSearch.toLowerCase();
         for(int i = 0; i < dsQuanTheoTinhThanh.size(); i++){
-            if(dsQuanTheoTinhThanh.get(i).getTenQuan().contains(textToSearch)){
+            if(dsQuanTheoTinhThanh.get(i).getTenQuan().toLowerCase().contains(textToSearch) || dsQuanTheoTinhThanh.get(i).getDiaChi().toLowerCase().contains(textToSearch)){
                 dsQuanTheoKQTK.add(dsQuanTheoTinhThanh.get(i));
             }
         }
         dsQuanHienThiKQTK = new ArrayList<>(dsQuanTheoKQTK);
-        tkAdapter = new RecyclerViewAdapterTimKiem(this,TimQuanActivity.this, dsQuanHienThiKQTK);
+        tkAdapter = new TimKiemAdapter(this,TimQuanActivity.this, dsQuanHienThiKQTK);
         rvkqtkQuan.setLayoutManager(new GridLayoutManager(this, 1));
         rvkqtkQuan.setAdapter(tkAdapter);
         dsQuanTheoKQTK.clear();
+    }
+
+    private void copyData(){
+        dsQuanTheoKQTK = new ArrayList<>(dsQuanTheoTinhThanh);
+        dsQuanHienThiKQTK = new ArrayList<>(dsQuanTheoTinhThanh);
     }
 }

@@ -20,48 +20,39 @@ import hcmute.edu.vn.foody06.view.QuanActivity;
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.model.Quan;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>  {
+public class QuanAdapter extends RecyclerView.Adapter<QuanAdapter.QuanViewHolder>  {
 
     private Context mContext;
     private List<Quan> mData;
 
 
-    public RecyclerViewAdapter(Context mContext, List<Quan> mData) {
+    public QuanAdapter(Context mContext, List<Quan> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public QuanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.cardview_item_quan,parent,false);
 
-        return new MyViewHolder(view);
+        return new QuanViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull QuanViewHolder holder, final int position) {
 
-        //final Context context = null;
         Quan data = mData.get(position);
         holder.txtTenQuan.setText(data.getTenQuan());
         holder.txtDescription.setText(data.getDescription());
-
-        Picasso.with(this.mContext).load(data.getUrlAnhDaiDien())
-                .into(holder.img_quan_thumbnail,new com.squareup.picasso.Callback(){
-
+        Picasso.with(this.mContext).load(data.getUrlAnhDaiDien()).into(holder.img_quan_thumbnail,new com.squareup.picasso.Callback(){
                     @Override
-                    public void onSuccess() {
-
-                    }
-
+                    public void onSuccess() {}
                     @Override
-                    public void onError() {
-
-                    }
+                    public void onError() {}
                 });
 
 
@@ -96,15 +87,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     //Hiển thị các item trên màn hình MainActivity
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class QuanViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTenQuan,txtDescription;
         ImageView img_quan_thumbnail;
         CardView cardView;
 
-        public MyViewHolder(View itemView) {
+        public QuanViewHolder(View itemView) {
             super(itemView);
-
             txtTenQuan = itemView.findViewById(R.id.cardview_quan_title);
             txtDescription =  itemView.findViewById(R.id.cardview_quan_description);
             img_quan_thumbnail =  itemView.findViewById(R.id.cardview_quan_img);

@@ -1,7 +1,6 @@
 package hcmute.edu.vn.foody06.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +18,6 @@ public class ChonTinhThanhAdapter extends BaseAdapter {
     Activity activity;
     List<TinhThanh> tinhthanhs;
     LayoutInflater inflater;
-
-
-    public ChonTinhThanhAdapter(Activity activity) {
-        this.activity = activity;
-    }
 
     public ChonTinhThanhAdapter(Activity activity, List<TinhThanh> tinhthanhs) {
         this.activity   = activity;
@@ -50,16 +44,15 @@ public class ChonTinhThanhAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-
+        TinhThanhViewHolder holder;
         if(convertView == null){
             convertView = inflater.inflate(R.layout.list_view_tinhthanh,parent,false);
-            holder = new ViewHolder();
-            holder.tenTinhThanh   = (TextView) convertView.findViewById(R.id.txttentinhthanh_listview_tinhthanh);
-            holder.imgCheckBox    = (ImageView) convertView.findViewById(R.id.imgcheckbox_listview_tinhthanh);
+            holder = new TinhThanhViewHolder();
+            holder.tenTinhThanh   =  convertView.findViewById(R.id.txttentinhthanh_listview_tinhthanh);
+            holder.imgCheckBox    =  convertView.findViewById(R.id.imgcheckbox_listview_tinhthanh);
             convertView.setTag(holder);
         }else{
-            holder = (ViewHolder) convertView.getTag();
+            holder = (TinhThanhViewHolder) convertView.getTag();
         }
 
         TinhThanh tinhThanh = tinhthanhs.get(position);
@@ -77,7 +70,7 @@ public class ChonTinhThanhAdapter extends BaseAdapter {
         this.tinhthanhs = tinhthanhs;
         notifyDataSetChanged();
     }
-    private static class ViewHolder{
+    private static class TinhThanhViewHolder{
         TextView tenTinhThanh;
         ImageView imgCheckBox;
     }

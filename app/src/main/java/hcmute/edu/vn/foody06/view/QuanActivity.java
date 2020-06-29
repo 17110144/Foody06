@@ -1,6 +1,5 @@
 package hcmute.edu.vn.foody06.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,20 +15,14 @@ import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import android.os.ResultReceiver;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,22 +33,14 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 import hcmute.edu.vn.foody06.R;
-import hcmute.edu.vn.foody06.adapter.RecyclerViewAdapter;
-import hcmute.edu.vn.foody06.adapter.RecyclerViewAdapterMon;
-import hcmute.edu.vn.foody06.model.Database;
+import hcmute.edu.vn.foody06.adapter.MonAdapter;
 import hcmute.edu.vn.foody06.model.Mon;
-import hcmute.edu.vn.foody06.model.Quan;
-import hcmute.edu.vn.foody06.service.Constants;
-import hcmute.edu.vn.foody06.service.LocationIntentService;
-
 import static hcmute.edu.vn.foody06.view.MainActivity.curTime;
 import static hcmute.edu.vn.foody06.view.MainActivity.db;
 
@@ -73,7 +57,7 @@ public class QuanActivity extends AppCompatActivity {
 
     RecyclerView rvMon;
     ArrayList<Mon> arrayMon;
-    RecyclerViewAdapterMon monAdapter;
+    MonAdapter monAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +70,7 @@ public class QuanActivity extends AppCompatActivity {
 
         arrayMon = new ArrayList<>();
         getAllDataMonTheoQuan();
-        monAdapter = new RecyclerViewAdapterMon(this,arrayMon);
+        monAdapter = new MonAdapter(this,arrayMon);
         rvMon.setLayoutManager(new GridLayoutManager(this,2));
         rvMon.setAdapter(monAdapter);
 
@@ -146,9 +130,9 @@ public class QuanActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_wifi);
 
-        final EditText editTenWifi = (EditText) dialog.findViewById(R.id.dialog_txtten_wifi);
-        final EditText editMatKhauWifi = (EditText) dialog.findViewById(R.id.dialog_txtpass_wifi);
-        Button btnXacNhan = (Button) dialog.findViewById(R.id.dialog_btncapnhat_wifi);
+        final EditText editTenWifi =  dialog.findViewById(R.id.dialog_txtten_wifi);
+        final EditText editMatKhauWifi =  dialog.findViewById(R.id.dialog_txtpass_wifi);
+        Button btnXacNhan =  dialog.findViewById(R.id.dialog_btncapnhat_wifi);
 
 
         editTenWifi.setText(ten);
@@ -169,13 +153,8 @@ public class QuanActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void testClickEvent()
-    {
-        Toast.makeText(this,"Clicked!",Toast.LENGTH_SHORT).show();
-    }
-
     private void nhanDuLieu() {
-        //Nhận dữ liệu từ Intent trước đó
+        //Nhận dữ liệu từ Intent đã put trước đó
         Intent intent = getIntent();
         IdQuan = Objects.requireNonNull(intent.getExtras()).getInt("IdQuan");
         TenQuan = intent.getExtras().getString("TenQuan");
@@ -288,7 +267,7 @@ public class QuanActivity extends AppCompatActivity {
     }
 
     private void getAllDataMonTheoQuan(){
-        Cursor dataQuan = db.GetData("SELECT * FROM Mon Where IdQuan ="+IdQuan+";");
+        Cursor dataQuan = db.GetData("SELECT * FROM Mon Where IdQuan ="+IdQuan+" LIMIT 4;");
         arrayMon.clear();
         while (dataQuan.moveToNext()){
             String urlanh = dataQuan.getString(5);

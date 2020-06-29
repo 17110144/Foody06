@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ThucDonActivity"
     android:orientation="vertical">
 
@@ -23,17 +23,16 @@
             android:background="?android:attr/selectableItemBackground"
             android:drawableStart="@drawable/ic_chevron_left_white_24dp" />
 
-        <TextView
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_thucdon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAlignment="center"
             android:layout_toEndOf="@+id/btnBack_thucdon"
             android:layout_toStartOf="@id/temp"
-            android:gravity="center_vertical"
-            android:text="Thực đơn"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
-            tools:ignore="RtlCompat" />
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@android:color/white"
+            android:textAllCaps="false"
+            app:tabMode="auto"/>
 
         <Button
             android:id="@+id/temp"
@@ -56,12 +55,12 @@
         android:textAlignment="center"
         android:padding="8dp"
         android:textSize="15sp"
-        android:background="#0D000000"/>
+        android:background="#0A000000"/>
 
-    <ListView
-        android:id="@+id/lstviewthucdon"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="3dp">
-    </ListView>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpage_thucdon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 </LinearLayout>

@@ -2,32 +2,28 @@ package hcmute.edu.vn.foody06.adapter;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.model.Mon;
 
-public class ThucDonAdapter extends BaseAdapter {
-    Activity activity;
+public class ThucDonMonAdapter extends BaseAdapter {
+    Fragment dsMon;
     List<Mon> Mons;
     LayoutInflater inflater;
 
-
-    public ThucDonAdapter(Activity activity) {
-        this.activity = activity;
-    }
-
-    public ThucDonAdapter(Activity activity, List<Mon> Mons) {
-        this.activity   = activity;
+    public ThucDonMonAdapter(Fragment dsMon, List<Mon> Mons) {
+        this.dsMon      = dsMon;
         this.Mons       = Mons;
-        inflater        = activity.getLayoutInflater();
+        inflater        = dsMon.getLayoutInflater();
     }
 
 
@@ -49,16 +45,16 @@ public class ThucDonAdapter extends BaseAdapter {
     @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ThucDonAdapter.ViewHolder holder = null;
+        ThucDonMonAdapter.ThucDonMonViewHolder holder = null;
 
         if(convertView == null){
             convertView = inflater.inflate(R.layout.list_view_thucdon,parent,false);
-            holder = new ThucDonAdapter.ViewHolder();
+            holder = new ThucDonMonAdapter.ThucDonMonViewHolder();
             holder.tenMon   =  convertView.findViewById(R.id.txttenmon_listview_thucdon);
             holder.giaMon   =  convertView.findViewById(R.id.txtgia_listview_thucdon);
             convertView.setTag(holder);
         }else{
-            holder = (ThucDonAdapter.ViewHolder) convertView.getTag();
+            holder = (ThucDonMonAdapter.ThucDonMonViewHolder) convertView.getTag();
         }
 
         Mon Mon = Mons.get(position);
@@ -70,7 +66,7 @@ public class ThucDonAdapter extends BaseAdapter {
 
     }
 
-    private static class ViewHolder{
+    private static class ThucDonMonViewHolder{
         TextView tenMon;
         TextView giaMon;
     }

@@ -30,8 +30,6 @@ import com.google.android.gms.location.LocationServices;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -41,14 +39,14 @@ import hcmute.edu.vn.foody06.model.Quan;
 
 import static hcmute.edu.vn.foody06.view.MainActivity.curTime;
 
-public class RecyclerViewAdapterTimKiem extends RecyclerView.Adapter<RecyclerViewAdapterTimKiem.MyViewHolder>  {
+public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.KQTKViewHolder>  {
 
     private Activity mActivity;
     private Context mContext;
     private List<Quan> mData;
 
 
-    public RecyclerViewAdapterTimKiem(Context mContext, Activity activity, List<Quan> mData) {
+    public TimKiemAdapter(Context mContext, Activity activity, List<Quan> mData) {
         this.mContext = mContext;
         this.mActivity = activity;
         this.mData = mData;
@@ -56,37 +54,30 @@ public class RecyclerViewAdapterTimKiem extends RecyclerView.Adapter<RecyclerVie
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public KQTKViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.cardview_ketquatimkiem_quan,parent,false);
 
-        return new MyViewHolder(view);
+        return new KQTKViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final KQTKViewHolder holder, final int position) {
         //Nhận dữ liệu và đổ vào view holder
         final Quan data = mData.get(position);
-        final Location quanLocation = new Location("Vị trí quán");
         final Location curLocation = new Location("Vị trí hiện tại");
+        final Location quanLocation = new Location("Vị trí quán");
 
         holder.txtTenQuan.setText(data.getTenQuan());
         holder.txtDiaChi.setText(data.getDiaChi());
         holder.txtLoaiHinh.setText(data.getLoaiHinh());
-        Picasso.with(this.mContext).load(data.getUrlAnhDaiDien())
-                .into(holder.img_kqtkquan_thumbnail,new com.squareup.picasso.Callback(){
-
+        Picasso.with(this.mContext).load(data.getUrlAnhDaiDien()).into(holder.img_kqtkquan_thumbnail,new com.squareup.picasso.Callback(){
                     @Override
-                    public void onSuccess() {
-
-                    }
-
+                    public void onSuccess() {}
                     @Override
-                    public void onError() {
-
-                    }
+                    public void onError() {}
                 });
 
 
@@ -151,6 +142,8 @@ public class RecyclerViewAdapterTimKiem extends RecyclerView.Adapter<RecyclerVie
             }
         }, Looper.getMainLooper());
 
+
+
         //Xử lý tính trạng thái mở cửa và xử lý sự kiện cho nút chấm Xanh
         String gionmocua = data.getGioMoCua().replace(":", "");
         int time1 = Integer.parseInt(gionmocua);
@@ -170,14 +163,14 @@ public class RecyclerViewAdapterTimKiem extends RecyclerView.Adapter<RecyclerVie
 
 
     //Hiển thị các item trên màn hình MainActivity
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class KQTKViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTenQuan,txtDiaChi,txtLoaiHinh,txtKhoangCach;
         ProgressBar progressBar;
         ImageView img_kqtkquan_thumbnail,img_trangthai;
         CardView cardView;
 
-        public MyViewHolder(View itemView) {
+        public KQTKViewHolder(View itemView) {
             super(itemView);
             txtTenQuan              = itemView.findViewById(R.id.txttenquan_ketquatimkiem);
             txtDiaChi               = itemView.findViewById(R.id.txtdiachi_quan_ketquatimkiem);
@@ -188,7 +181,5 @@ public class RecyclerViewAdapterTimKiem extends RecyclerView.Adapter<RecyclerVie
             progressBar             = itemView.findViewById(R.id.progressBar_ketquatimkiem);
             img_trangthai           = itemView.findViewById(R.id.img_trangthai_ketquatimkiem);
         }
-
     }
-
 }

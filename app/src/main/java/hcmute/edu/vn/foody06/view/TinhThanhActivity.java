@@ -2,22 +2,18 @@ package hcmute.edu.vn.foody06.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import hcmute.edu.vn.foody06.R;
 import hcmute.edu.vn.foody06.adapter.ChonTinhThanhAdapter;
@@ -35,16 +31,16 @@ public class TinhThanhActivity extends AppCompatActivity {
 
     ChonTinhThanhAdapter adapter;
     int preSelectedIndex = -1;
-    String TinhThanhDuocChon = "TP HCM";
+    String TinhThanhDuocChon = MainActivity.tenTinhThanh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinh_thanh);
 
-        btnHuy = (Button) findViewById(R.id.btnhuy_tim_tinhthanh);
-        btnXacNhan = (Button) findViewById(R.id.btnxong_tim_tinhthanh);
-        lsvTinhThanh = (ListView) findViewById(R.id.lstview_chon_tinhthanh);
-        editTextSearch = (EditText) findViewById(R.id.txttim_tinhthanh);
+        btnHuy =  findViewById(R.id.btnhuy_tim_tinhthanh);
+        btnXacNhan =  findViewById(R.id.btnxong_tim_tinhthanh);
+        lsvTinhThanh =  findViewById(R.id.lstview_chon_tinhthanh);
+        editTextSearch =  findViewById(R.id.txttim_tinhthanh);
 
         tinhthanhs = themTinhThanh();
         kqtimkiem = themTinhThanh();
@@ -126,12 +122,12 @@ public class TinhThanhActivity extends AppCompatActivity {
     }
 
     private void searchItem(String textToSearch) {
+        textToSearch = textToSearch.toLowerCase();
         for(int i = 0; i < tinhthanhs.size(); i++){
-            if(tinhthanhs.get(i).getTenTinhThanh().contains(textToSearch)){
+            if(tinhthanhs.get(i).getTenTinhThanh().toLowerCase().contains(textToSearch)){
                 kqtimkiem.add(tinhthanhs.get(i));
             }
         }
-
         kqhienthi = new ArrayList<>(kqtimkiem);
         adapter = new ChonTinhThanhAdapter(this,kqhienthi);
         lsvTinhThanh.setAdapter(adapter);
@@ -198,7 +194,7 @@ public class TinhThanhActivity extends AppCompatActivity {
         tinhthanhs.add(new TinhThanh(false,"Thái Bình"));
         tinhthanhs.add(new TinhThanh(false,"Thái Nguyên"));
         tinhthanhs.add(new TinhThanh(false,"Thanh Hóa"));
-        tinhthanhs.add(new TinhThanh(false,"Huế"));
+        tinhthanhs.add(new TinhThanh(false,"Thừa Thiên Huế"));
         tinhthanhs.add(new TinhThanh(false,"Tiền Giang"));
         tinhthanhs.add(new TinhThanh(false,"Trà Vinh"));
         tinhthanhs.add(new TinhThanh(false,"Tuyên Quang"));

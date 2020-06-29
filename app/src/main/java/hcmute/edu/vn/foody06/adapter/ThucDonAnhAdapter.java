@@ -19,43 +19,36 @@ import java.util.List;
 import hcmute.edu.vn.foody06.model.Mon;
 import hcmute.edu.vn.foody06.R;
 
-public class RecyclerViewAdapterMon extends RecyclerView.Adapter<RecyclerViewAdapterMon.MonViewHolder>  {
+public class ThucDonAnhAdapter extends RecyclerView.Adapter<ThucDonAnhAdapter.ThucDonAnhViewHolder>  {
 
     private Context mContext;
     private List<Mon> mData;
 
 
-    public RecyclerViewAdapterMon(Context mContext, List<Mon> mData) {
+    public ThucDonAnhAdapter(Context mContext, List<Mon> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public MonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ThucDonAnhViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.cardview_item_mon,parent,false);
 
-        return new MonViewHolder(view);
+        return new ThucDonAnhViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MonViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ThucDonAnhViewHolder holder, final int position) {
         holder.txtTenMon.setText(mData.get(position).getTenMon());
-        Picasso.with(this.mContext).load(mData.get(position).getURLHinhAnh())
-                .into(holder.imgAnhMon,new com.squareup.picasso.Callback(){
-
+        Picasso.with(this.mContext).load(mData.get(position).getURLHinhAnh()).into(holder.imgAnhMon,new com.squareup.picasso.Callback(){
                     @Override
-                    public void onSuccess() {
-
-                    }
-
+                    public void onSuccess() {}
                     @Override
-                    public void onError() {
-
-                    }
+                    public void onError() {}
                 });
 
         holder.cardView.setOnClickListener(new View.OnClickListener(){
@@ -73,13 +66,13 @@ public class RecyclerViewAdapterMon extends RecyclerView.Adapter<RecyclerViewAda
 
 
     //Hiển thị các item trên màn hình MainActivity
-    public static class MonViewHolder extends RecyclerView.ViewHolder{
+    public static class ThucDonAnhViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTenMon;
         ImageView imgAnhMon;
         CardView cardView;
 
-        public MonViewHolder(View itemView) {
+        public ThucDonAnhViewHolder(View itemView) {
             super(itemView);
 
             txtTenMon =  itemView.findViewById(R.id.cardview_mon_txttenmon);
